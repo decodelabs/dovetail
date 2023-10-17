@@ -203,13 +203,44 @@ class Context
         }
 
         $resolveName = explode('#', $name)[0];
-        $class = Archetype::resolve(Config::class, $resolveName);
+        $configClass = Archetype::resolve(Config::class, $resolveName);
 
-        $repository = $this->loadRespository($name);
-        $config = new $class($repository);
+        $manifest = $this->getFinder()->findConfig($name);
+        $loader = $this->getLoaderFor($manifest);
 
+        if (!$manifest->exists()) {
+            $repository = $this->initRepository($manifest, $loader, $configClass);
+        } else {
+            $repository = $loader->loadConfig($manifest);
+        }
+
+        $config = new $configClass($manifest, $repository);
         $this->configs[$name] = $config;
+
         return $this->configs[$name];
+    }
+
+    /**
+     * @param class-string<Config> $configClass
+     */
+    protected function initRepository(
+        Manifest $manifest,
+        Loader $loader,
+        string $configClass
+    ): Repository {
+        $data = $configClass::getDefaultValues();
+
+        if (class_exists(Genesis::class)) {
+            $development = Genesis::$environment->isDevelopment();
+        } else {
+            $development = false;
+        }
+
+        if ($development) {
+            $loader->saveConfig($manifest, $data);
+        }
+
+        return new Repository($data);
     }
 
 
@@ -221,8 +252,16 @@ class Context
             return null;
         }
 
-        $class = Archetype::resolve(Loader::class, $manifest->getLoaderName());
-        $loader = new $class();
+        $loader = $this->getLoaderFor($manifest);
         return $loader->loadConfig($manifest);
+    }
+
+    /**
+     * Get Loader for Manifest
+     */
+    public function getLoaderFor(Manifest $manifest): Loader
+    {
+        $class = Archetype::resolve(Loader::class, $manifest->getLoaderName());
+        return new $class();
     }
 }

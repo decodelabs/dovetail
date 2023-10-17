@@ -12,7 +12,7 @@ namespace DecodeLabs\Dovetail;
 interface Config
 {
     /**
-     * @return array<mixed>
+     * @return array<int|string, bool|float|int|array<mixed>|string|null>
      */
     public static function getDefaultValues(): array;
 

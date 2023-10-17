@@ -11,6 +11,8 @@ use DecodeLabs\Dovetail\Context as Inst;
 use DecodeLabs\Dovetail\Finder as Ref0;
 use DecodeLabs\Dovetail\Config as Ref1;
 use DecodeLabs\Dovetail\Repository as Ref2;
+use DecodeLabs\Dovetail\Manifest as Ref3;
+use DecodeLabs\Dovetail\Loader as Ref4;
 
 class Dovetail implements Proxy
 {
@@ -51,10 +53,13 @@ class Dovetail implements Proxy
     public static function envBool(string $name, ?bool $default = NULL): ?bool {
         return static::$instance->envBool(...func_get_args());
     }
-    public static function loadConfig(string $name): Ref1 {
-        return static::$instance->loadConfig(...func_get_args());
+    public static function load(string $name): Ref1 {
+        return static::$instance->load(...func_get_args());
     }
     public static function loadRespository(string $name): ?Ref2 {
         return static::$instance->loadRespository(...func_get_args());
+    }
+    public static function getLoaderFor(Ref3 $manifest): Ref4 {
+        return static::$instance->getLoaderFor(...func_get_args());
     }
 };

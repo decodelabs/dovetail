@@ -15,4 +15,14 @@ interface Loader
      * Load config Repository from Finder Manifest
      */
     public function loadConfig(Manifest $manifest): Repository;
+
+    /**
+     * Save config Repository to Finder Manifest
+     *
+     * @param array<int|string, bool|float|int|array<mixed>|string|null> $data
+     */
+    public function saveConfig(
+        Manifest $manifest,
+        array $data
+    ): void;
 }
