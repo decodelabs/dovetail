@@ -56,8 +56,8 @@ class Dovetail implements Proxy
     public static function load(string $name): Ref1 {
         return static::$instance->load(...func_get_args());
     }
-    public static function loadRespository(string $name): ?Ref2 {
-        return static::$instance->loadRespository(...func_get_args());
+    public static function loadRepository(string $name): ?Ref2 {
+        return static::$instance->loadRepository(...func_get_args());
     }
     public static function getLoaderFor(Ref3 $manifest): Ref4 {
         return static::$instance->getLoaderFor(...func_get_args());

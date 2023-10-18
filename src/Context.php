@@ -248,7 +248,7 @@ class Context
     }
 
 
-    public function loadRespository(string $name): ?Repository
+    public function loadRepository(string $name): ?Repository
     {
         $manifest = $this->getFinder()->findConfig($name);
 
