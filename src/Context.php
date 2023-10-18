@@ -20,8 +20,6 @@ use DecodeLabs\Veneer\LazyLoad;
 
 use Dotenv\Dotenv;
 
-Veneer::register(Context::class, Dovetail::class);
-
 #[LazyLoad]
 class Context
 {
@@ -269,3 +267,7 @@ class Context
         return new $class();
     }
 }
+
+
+// Register Veneer frontage
+Veneer::register(Context::class, Dovetail::class);
