@@ -9,8 +9,13 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Dovetail;
 
-interface Config
+use DecodeLabs\Fluidity\Cast;
+
+interface Config extends Cast
 {
+    public static function load(): static;
+    public static function getRepositoryName(): string;
+
     /**
      * @return array<int|string, bool|float|int|array<mixed>|string|null>
      */

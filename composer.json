@@ -16,10 +16,11 @@
 
         "vlucas/phpdotenv": "^5.5",
         "decodelabs/archetype": "^0.2.13",
-        "decodelabs/collections": "^0.8.2"
+        "decodelabs/collections": "^0.8.2",
+        "decodelabs/fluidity": "^0.3.4"
     },
     "require-dev": {
-        "decodelabs/genesis": "^0.7.4",
+        "decodelabs/genesis": "^0.7.4|^0.8",
         "decodelabs/glitch": "^0.18.8",
         "decodelabs/phpstan-decodelabs": "^0.6.6"
     },

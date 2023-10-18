@@ -9,10 +9,27 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Dovetail;
 
+use DecodeLabs\Dovetail;
+use DecodeLabs\Fluidity\CastTrait;
+
 trait ConfigTrait
 {
+    use CastTrait;
+
     protected Repository $data;
     protected Manifest $manifest;
+
+    public static function load(): static
+    {
+        return Dovetail::load(static::getRepositoryName())
+            ->as(static::class);
+    }
+
+    public static function getRepositoryName(): string
+    {
+        $parts = explode('\\', static::class);
+        return array_pop($parts);
+    }
 
     public function __construct(
         Manifest $manifest,

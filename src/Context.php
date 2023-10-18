@@ -20,8 +20,6 @@ use DecodeLabs\Veneer\LazyLoad;
 
 use Dotenv\Dotenv;
 
-Veneer::register(Context::class, Dovetail::class);
-
 #[LazyLoad]
 class Context
 {
@@ -199,6 +197,10 @@ class Context
 
     /**
      * Load config
+     *
+     * @template T of Config
+     * @param string|class-string<T> $name
+     * @return ($name is class-string<T> ? T : Config)
      */
     public function load(string $name): Config
     {
@@ -206,8 +208,8 @@ class Context
             return $this->configs[$name];
         }
 
-        $resolveName = explode('#', $name)[0];
-        $configClass = Archetype::resolve(Config::class, $resolveName);
+        $configClass = Archetype::resolve(Config::class, $name);
+        $name = $configClass::getRepositoryName();
 
         $manifest = $this->getFinder()->findConfig($name);
         $loader = $this->getLoaderFor($manifest);
@@ -269,3 +271,7 @@ class Context
         return new $class();
     }
 }
+
+
+// Register Veneer frontage
+Veneer::register(Context::class, Dovetail::class);
