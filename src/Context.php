@@ -11,12 +11,16 @@ namespace DecodeLabs\Dovetail;
 
 use DecodeLabs\Archetype;
 use DecodeLabs\Coercion;
+use DecodeLabs\Dovetail;
 use DecodeLabs\Dovetail\Finder\Generic as GenericFinder;
 use DecodeLabs\Exceptional;
 use DecodeLabs\Genesis;
+use DecodeLabs\Veneer;
 use DecodeLabs\Veneer\LazyLoad;
 
 use Dotenv\Dotenv;
+
+Veneer::register(Context::class, Dovetail::class);
 
 #[LazyLoad]
 class Context
@@ -244,7 +248,7 @@ class Context
     }
 
 
-    public function loadRespository(string $name): ?Repository
+    public function loadRepository(string $name): ?Repository
     {
         $manifest = $this->getFinder()->findConfig($name);
 

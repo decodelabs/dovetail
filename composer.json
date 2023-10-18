@@ -25,10 +25,10 @@
     },
     "autoload": {
         "psr-4": {
-            "DecodeLabs\\Dovetail\\": "src/Dovetail"
+            "DecodeLabs\\Dovetail\\": "src/"
         },
         "files": [
-            "src/global.php"
+            "src/Context.php"
         ]
     },
     "extra": {
