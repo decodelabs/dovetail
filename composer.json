@@ -16,7 +16,8 @@
 
         "vlucas/phpdotenv": "^5.5",
         "decodelabs/archetype": "^0.2.13",
-        "decodelabs/collections": "^0.8.2"
+        "decodelabs/collections": "^0.8.2",
+        "decodelabs/fluidity": "^0.3.4"
     },
     "require-dev": {
         "decodelabs/genesis": "^0.7.4|^0.8",
