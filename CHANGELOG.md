@@ -1,3 +1,5 @@
+* Made env Repository mutable
+
 ## v0.1.2 (2023-10-18)
 * Allow loading config from resolved class
 
