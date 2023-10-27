@@ -73,6 +73,8 @@ class Context
         }
 
         $this->envPath = $path;
+        $this->loadEnv();
+
         return $this;
     }
 
@@ -130,7 +132,7 @@ class Context
             return;
         }
 
-        $this->env = Dotenv::createImmutable($this->getEnvPath());
+        $this->env = Dotenv::createMutable($this->getEnvPath());
         $this->env->safeLoad();
     }
 
