@@ -3,7 +3,7 @@
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/decodelabs/dovetail?style=flat)](https://packagist.org/packages/decodelabs/dovetail)
 [![Latest Version](https://img.shields.io/packagist/v/decodelabs/dovetail.svg?style=flat)](https://packagist.org/packages/decodelabs/dovetail)
 [![Total Downloads](https://img.shields.io/packagist/dt/decodelabs/dovetail.svg?style=flat)](https://packagist.org/packages/decodelabs/dovetail)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/decodelabs/dovetail/Integrate)](https://github.com/decodelabs/dovetail/actions/workflows/integrate.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/decodelabs/dovetail/integrate.yml?branch=develop)](https://github.com/decodelabs/dovetail/actions/workflows/integrate.yml)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-44CC11.svg?longCache=true&style=flat)](https://github.com/phpstan/phpstan)
 [![License](https://img.shields.io/packagist/l/decodelabs/dovetail?style=flat)](https://packagist.org/packages/decodelabs/dovetail)
 
