@@ -12,5 +12,8 @@ namespace DecodeLabs\Dovetail;
 interface Finder
 {
     public function findEnv(): ?Manifest;
-    public function findConfig(string $name): Manifest;
+
+    public function findConfig(
+        string $name
+    ): Manifest;
 }

@@ -18,8 +18,9 @@ class PHP implements Loader
     /**
      * Load PHP array config
      */
-    public function loadConfig(Manifest $manifest): Repository
-    {
+    public function loadConfig(
+        Manifest $manifest
+    ): Repository {
         $data = require $manifest->getPath();
 
         if (is_iterable($data)) {

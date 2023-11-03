@@ -38,8 +38,9 @@ class Manifest
         return $this->format;
     }
 
-    public function isFormat(string|Format $format): bool
-    {
+    public function isFormat(
+        string|Format $format
+    ): bool {
         return $this->format->is($format);
     }
 

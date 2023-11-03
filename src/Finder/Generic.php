@@ -35,8 +35,9 @@ class Generic implements Finder
     /**
      * Find PHP config file
      */
-    public function findConfig(string $name): Manifest
-    {
+    public function findConfig(
+        string $name
+    ): Manifest {
         return new Manifest(
             $name,
             $this->rootPath . '/' . $this->configPath . '/' . $name . '.php',

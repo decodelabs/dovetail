@@ -14,7 +14,9 @@ interface Loader
     /**
      * Load config Repository from Finder Manifest
      */
-    public function loadConfig(Manifest $manifest): Repository;
+    public function loadConfig(
+        Manifest $manifest
+    ): Repository;
 
     /**
      * Save config Repository to Finder Manifest
