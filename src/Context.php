@@ -15,6 +15,7 @@ use DecodeLabs\Dovetail;
 use DecodeLabs\Dovetail\Finder\Generic as GenericFinder;
 use DecodeLabs\Exceptional;
 use DecodeLabs\Genesis;
+use DecodeLabs\Genesis\Environment;
 use DecodeLabs\Veneer;
 use DecodeLabs\Veneer\LazyLoad;
 
@@ -40,8 +41,9 @@ class Context
      *
      * @return $this
      */
-    public function setFinder(Finder $finder): Context
-    {
+    public function setFinder(
+        Finder $finder
+    ): Context {
         $this->finder = $finder;
         return $this;
     }
@@ -64,8 +66,9 @@ class Context
      *
      * @return $this
      */
-    public function setEnvPath(string $path): Context
-    {
+    public function setEnvPath(
+        string $path
+    ): Context {
         if ($this->env) {
             throw Exceptional::Runtime(
                 'Cannot set env path after env has been loaded'
@@ -139,8 +142,9 @@ class Context
     /**
      * Env value exists?
      */
-    public function hasEnv(string $name): bool
-    {
+    public function hasEnv(
+        string $name
+    ): bool {
         $this->loadEnv();
         return isset($_ENV[$name]);
     }
@@ -204,8 +208,9 @@ class Context
      * @param string|class-string<T> $name
      * @return ($name is class-string<T> ? T : Config)
      */
-    public function load(string $name): Config
-    {
+    public function load(
+        string $name
+    ): Config {
         if (isset($this->configs[$name])) {
             return $this->configs[$name];
         }
@@ -238,10 +243,13 @@ class Context
     ): Repository {
         $data = $configClass::getDefaultValues();
 
-        if (class_exists(Genesis::class)) {
+        if (
+            class_exists(Genesis::class) &&
+            Genesis::$environment instanceof Environment
+        ) {
             $development = Genesis::$environment->isDevelopment();
         } else {
-            $development = false;
+            $development = $this->envString('ENV_MODE') === 'development';
         }
 
         if ($development) {
@@ -252,8 +260,9 @@ class Context
     }
 
 
-    public function loadRepository(string $name): ?Repository
-    {
+    public function loadRepository(
+        string $name
+    ): ?Repository {
         $manifest = $this->getFinder()->findConfig($name);
 
         if (!$manifest->exists()) {
@@ -267,8 +276,9 @@ class Context
     /**
      * Get Loader for Manifest
      */
-    public function getLoaderFor(Manifest $manifest): Loader
-    {
+    public function getLoaderFor(
+        Manifest $manifest
+    ): Loader {
         $class = Archetype::resolve(Loader::class, $manifest->getLoaderName());
         return new $class();
     }
