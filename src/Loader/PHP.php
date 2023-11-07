@@ -40,6 +40,7 @@ class PHP implements Loader
         $output = static::exportArray($data);
         $output = '<?php' . "\n\n" . 'return ' . $output . ';';
 
+        mkdir(dirname($manifest->getPath()), 0770, true);
         file_put_contents($manifest->getPath(), $output);
     }
 

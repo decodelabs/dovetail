@@ -1,3 +1,5 @@
+* Ensure config dir exists before save
+
 ## v0.1.4 (2023-11-07)
 * Use .env run mode when no Genesis Environment
 
