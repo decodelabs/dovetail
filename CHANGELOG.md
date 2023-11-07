@@ -1,3 +1,5 @@
+* Use .env run mode when no Genesis Environment
+
 ## v0.1.3 (2023-10-27)
 * Made env Repository mutable
 

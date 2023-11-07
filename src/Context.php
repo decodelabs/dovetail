@@ -15,6 +15,7 @@ use DecodeLabs\Dovetail;
 use DecodeLabs\Dovetail\Finder\Generic as GenericFinder;
 use DecodeLabs\Exceptional;
 use DecodeLabs\Genesis;
+use DecodeLabs\Genesis\Environment;
 use DecodeLabs\Veneer;
 use DecodeLabs\Veneer\LazyLoad;
 
@@ -242,10 +243,13 @@ class Context
     ): Repository {
         $data = $configClass::getDefaultValues();
 
-        if (class_exists(Genesis::class)) {
+        if (
+            class_exists(Genesis::class) &&
+            Genesis::$environment instanceof Environment
+        ) {
             $development = Genesis::$environment->isDevelopment();
         } else {
-            $development = false;
+            $development = $this->envString('ENV_MODE') === 'development';
         }
 
         if ($development) {
