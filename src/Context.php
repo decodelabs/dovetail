@@ -222,10 +222,10 @@ class Context
         $loader = $this->getLoaderFor($manifest);
 
         if (!$manifest->exists()) {
-            $repository = $this->initRepository($manifest, $loader, $configClass);
-        } else {
-            $repository = $loader->loadConfig($manifest);
+            $this->initRepository($manifest, $loader, $configClass);
         }
+
+        $repository = $loader->loadConfig($manifest);
 
         $config = new $configClass($manifest, $repository);
         $this->configs[$name] = $config;
@@ -240,7 +240,7 @@ class Context
         Manifest $manifest,
         Loader $loader,
         string $configClass
-    ): Repository {
+    ): void {
         $data = $configClass::getDefaultValues();
 
         if (
@@ -253,10 +253,8 @@ class Context
         }
 
         if ($development) {
-            $loader->saveConfig($manifest, $data);
+            $loader->saveConfig($manifest, new Template($data));
         }
-
-        return new Repository($data);
     }
 
 

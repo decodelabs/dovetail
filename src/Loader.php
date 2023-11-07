@@ -20,11 +20,9 @@ interface Loader
 
     /**
      * Save config Repository to Finder Manifest
-     *
-     * @param array<int|string, bool|float|int|array<mixed>|string|null> $data
      */
     public function saveConfig(
         Manifest $manifest,
-        array $data
+        Template $data
     ): void;
 }

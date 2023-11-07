@@ -9,9 +9,12 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Dovetail\Loader;
 
+use DecodeLabs\Atlas;
 use DecodeLabs\Dovetail\Loader;
 use DecodeLabs\Dovetail\Manifest;
 use DecodeLabs\Dovetail\Repository;
+use DecodeLabs\Dovetail\Template;
+use DecodeLabs\Dovetail\Template\Resolvable;
 
 class PHP implements Loader
 {
@@ -35,20 +38,22 @@ class PHP implements Loader
      */
     public function saveConfig(
         Manifest $manifest,
-        array $data
+        Template $template
     ): void {
-        $output = static::exportArray($data);
-        $output = '<?php' . "\n\n" . 'return ' . $output . ';';
+        $output = static::exportArray($template->getData());
+        $output =
+            '<?php' . "\n\n" .
+            $template->getUseStatements() .
+            'return ' . $output . ';';
 
-        mkdir(dirname($manifest->getPath()), 0770, true);
-        file_put_contents($manifest->getPath(), $output);
+        Atlas::createFile($manifest->getPath(), $output);
     }
 
 
     /**
      * Export array to PHP
      *
-     * @param array<int|string, bool|float|int|array<mixed>|string|null> $values
+     * @param array<int|string, bool|float|int|array<mixed>|string|Resolvable|null> $values
      */
     protected static function exportArray(
         array $values,
@@ -76,10 +81,12 @@ class PHP implements Loader
                 $output .= '\'' . addslashes((string)$key) . '\' => ';
             }
 
-            if (is_null($val)) {
+            if ($val instanceof Resolvable) {
+                $output .= $val->getCode();
+            } elseif (is_null($val)) {
                 $output .= 'null';
             } elseif (is_array($val)) {
-                /** @var array<int|string, bool|float|int|array<mixed>|string|null> $val */
+                /** @var array<int|string, bool|float|int|array<mixed>|string|Resolvable|null> $val */
                 $output .= self::exportArray($val, $level + 1);
             } elseif (
                 is_int($val) ||

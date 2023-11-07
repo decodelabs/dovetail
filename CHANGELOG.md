@@ -1,3 +1,4 @@
+* Added defaultValue Template structure
 * Ensure config dir exists before save
 
 ## v0.1.4 (2023-11-07)
