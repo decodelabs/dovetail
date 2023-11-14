@@ -12,7 +12,7 @@ namespace DecodeLabs\Dovetail;
 enum Format: string
 {
     case DotEnv = 'DotEnv';
-    case PHP = 'PHP';
+    case Php = 'PHP';
 
     public function is(
         string|Format $format
