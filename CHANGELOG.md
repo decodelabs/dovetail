@@ -1,3 +1,4 @@
+* Added canLoad() helper
 * Renamed enums to PascalCase
 
 ## v0.2.0 (2023-11-07)

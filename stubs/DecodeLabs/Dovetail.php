@@ -53,6 +53,9 @@ class Dovetail implements Proxy
     public static function envBool(string $name, ?bool $default = NULL): ?bool {
         return static::$instance->envBool(...func_get_args());
     }
+    public static function canLoad(string $name, ?string $interface = NULL): bool {
+        return static::$instance->canLoad(...func_get_args());
+    }
     public static function load(string $name): Ref1 {
         return static::$instance->load(...func_get_args());
     }
