@@ -44,7 +44,7 @@ class PHP implements Loader
         $output =
             '<?php' . "\n\n" .
             $template->getUseStatements() .
-            'return ' . $output . ';';
+            'return ' . $output . ';' . "\n";
 
         Atlas::createFile($manifest->getPath(), $output);
     }

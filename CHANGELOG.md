@@ -1,3 +1,5 @@
+* Add final new line to generated PHP files
+
 ## v0.2.1 (2023-11-27)
 * Added canLoad() helper
 * Renamed enums to PascalCase
