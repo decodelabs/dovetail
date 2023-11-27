@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace DecodeLabs\Dovetail;
 
 use DecodeLabs\Archetype;
+use DecodeLabs\Archetype\Exception as ArchetypeException;
 use DecodeLabs\Coercion;
 use DecodeLabs\Dovetail;
 use DecodeLabs\Dovetail\Finder\Generic as GenericFinder;
@@ -198,6 +199,37 @@ class Context
         ?bool $default = null
     ): ?bool {
         return Coercion::toBoolOrNull($this->env($name) ?? $default);
+    }
+
+
+    /**
+     * Can load
+     */
+    public function canLoad(
+        string $name,
+        ?string $interface = null
+    ): bool {
+        if (
+            isset($this->configs[$name]) &&
+            (
+                !$interface ||
+                $this->configs[$name] instanceof $interface
+            )
+        ) {
+            return true;
+        }
+
+        try {
+            $configClass = Archetype::resolve(Config::class, $name);
+        } catch (ArchetypeException $e) {
+            return false;
+        }
+
+
+        return
+            !$interface ||
+            is_a($configClass, $interface, true)
+        ;
     }
 
 

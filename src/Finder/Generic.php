@@ -41,7 +41,7 @@ class Generic implements Finder
         return new Manifest(
             $name,
             $this->rootPath . '/' . $this->configPath . '/' . $name . '.php',
-            Format::PHP
+            Format::Php
         );
     }
 }
