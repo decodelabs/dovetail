@@ -112,7 +112,7 @@ class Context
         if (class_exists(Genesis::class)) {
             try {
                 return Genesis::$hub->getApplicationPath();
-            } catch(Throwable $e) {
+            } catch (Throwable $e) {
             }
         }
 
