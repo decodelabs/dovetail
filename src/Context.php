@@ -21,6 +21,7 @@ use DecodeLabs\Veneer;
 use DecodeLabs\Veneer\LazyLoad;
 
 use Dotenv\Dotenv;
+use Throwable;
 
 #[LazyLoad]
 class Context
@@ -109,7 +110,10 @@ class Context
         }
 
         if (class_exists(Genesis::class)) {
-            return Genesis::$hub->getApplicationPath();
+            try {
+                return Genesis::$hub->getApplicationPath();
+            } catch (Throwable $e) {
+            }
         }
 
         if (false !== ($path = getcwd())) {
