@@ -1,4 +1,5 @@
 * Add final new line to generated PHP files
+* Added try/catch to Genesis::$hub access
 
 ## v0.2.1 (2023-11-27)
 * Added canLoad() helper
