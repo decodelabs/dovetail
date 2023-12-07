@@ -89,7 +89,7 @@ class Template
     {
         $output = [];
 
-        foreach ($this->namespaces as $namespace) {
+        foreach (array_unique($this->namespaces) as $namespace) {
             $output[] = 'use ' . $namespace . ';';
         }
 
