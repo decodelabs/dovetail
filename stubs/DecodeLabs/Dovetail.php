@@ -38,19 +38,19 @@ class Dovetail implements Proxy
     public static function hasEnv(string $name): bool {
         return static::$instance->hasEnv(...func_get_args());
     }
-    public static function env(string $name, string|int|float|bool|null $default = NULL): string|int|float|bool|null {
+    public static function env(array|string $name, string|int|float|bool|null $default = NULL): string|int|float|bool|null {
         return static::$instance->env(...func_get_args());
     }
-    public static function envString(string $name, ?string $default = NULL): ?string {
+    public static function envString(array|string $name, ?string $default = NULL): ?string {
         return static::$instance->envString(...func_get_args());
     }
-    public static function envInt(string $name, ?int $default = NULL): ?int {
+    public static function envInt(array|string $name, ?int $default = NULL): ?int {
         return static::$instance->envInt(...func_get_args());
     }
-    public static function envFloat(string $name, ?float $default = NULL): ?float {
+    public static function envFloat(array|string $name, ?float $default = NULL): ?float {
         return static::$instance->envFloat(...func_get_args());
     }
-    public static function envBool(string $name, ?bool $default = NULL): ?bool {
+    public static function envBool(array|string $name, ?bool $default = NULL): ?bool {
         return static::$instance->envBool(...func_get_args());
     }
     public static function canLoad(string $name, ?string $interface = NULL): bool {
