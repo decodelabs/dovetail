@@ -156,20 +156,35 @@ class Context
 
     /**
      * Get env value without typing
+     *
+     * @param string|array<string> $name
      */
     public function env(
-        string $name,
+        string|array $name,
         string|bool|int|float|null $default = null
     ): string|bool|int|float|null {
         $this->loadEnv();
+
+        if (is_array($name)) {
+            foreach ($name as $key) {
+                if (isset($_ENV[$key])) {
+                    return $_ENV[$key];
+                }
+            }
+
+            return $default;
+        }
+
         return $_ENV[$name] ?? $default;
     }
 
     /**
      * Get string env value
+     *
+     * @param string|array<string> $name
      */
     public function envString(
-        string $name,
+        string|array $name,
         ?string $default = null
     ): ?string {
         return Coercion::toStringOrNull($this->env($name) ?? $default);
@@ -177,9 +192,11 @@ class Context
 
     /**
      * Get int env value
+     *
+     * @param string|array<string> $name
      */
     public function envInt(
-        string $name,
+        string|array $name,
         ?int $default = null
     ): ?int {
         return Coercion::toIntOrNull($this->env($name) ?? $default);
@@ -187,9 +204,11 @@ class Context
 
     /**
      * Get float env value
+     *
+     * @param string|array<string> $name
      */
     public function envFloat(
-        string $name,
+        string|array $name,
         ?float $default = null
     ): ?float {
         return Coercion::toFloatOrNull($this->env($name) ?? $default);
@@ -197,9 +216,11 @@ class Context
 
     /**
      * Get bool env value
+     *
+     * @param string|array<string> $name
      */
     public function envBool(
-        string $name,
+        string|array $name,
         ?bool $default = null
     ): ?bool {
         return Coercion::toBoolOrNull($this->env($name) ?? $default);

@@ -1,3 +1,6 @@
+* Allow name lists in env lookups
+* Fixed unique namespaces in config file generator
+
 ## v0.2.2 (2023-12-06)
 * Add final new line to generated PHP files
 * Added try/catch to Genesis::$hub access
