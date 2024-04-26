@@ -1,3 +1,5 @@
+* Updated dependency list
+
 ## v0.2.3 (2023-12-07)
 * Allow name lists in env lookups
 * Fixed unique namespaces in config file generator
