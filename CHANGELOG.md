@@ -1,3 +1,7 @@
+## v0.2.4 (2024-04-26)
+* Updated Archetype dependency
+* Updated dependency list
+
 ## v0.2.3 (2023-12-07)
 * Allow name lists in env lookups
 * Fixed unique namespaces in config file generator
