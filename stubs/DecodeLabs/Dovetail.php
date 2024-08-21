@@ -18,8 +18,8 @@ class Dovetail implements Proxy
 {
     use ProxyTrait;
 
-    const VENEER = 'DecodeLabs\\Dovetail';
-    const VENEER_TARGET = Inst::class;
+    const Veneer = 'DecodeLabs\\Dovetail';
+    const VeneerTarget = Inst::class;
 
     public static Inst $instance;
 
