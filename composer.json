@@ -11,9 +11,9 @@
     "require": {
         "php": "^8.1",
 
-        "decodelabs/atlas": "^0.11.0",
+        "decodelabs/atlas": "^0.12",
         "decodelabs/archetype": "^0.3",
-        "decodelabs/collections": "^0.8.2",
+        "decodelabs/collections": "^0.9",
         "decodelabs/coercion": "^0.2.7",
         "decodelabs/exceptional": "^0.4.4",
         "decodelabs/fluidity": "^0.3.4",
@@ -22,7 +22,7 @@
         "vlucas/phpdotenv": "^5.5"
     },
     "require-dev": {
-        "decodelabs/genesis": "^0.8",
+        "decodelabs/genesis": "^0.9",
         "decodelabs/phpstan-decodelabs": "^0.6.6"
     },
     "autoload": {
