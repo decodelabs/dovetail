@@ -16,5 +16,5 @@ use DecodeLabs\Collections\Tree\NativeMutable as MutableTree;
  */
 class Repository extends MutableTree
 {
-    public const KEY_SEPARATOR = '.';
+    protected const KeySeparator = '.';
 }

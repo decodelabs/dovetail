@@ -18,12 +18,9 @@ use DecodeLabs\Exceptional;
 use DecodeLabs\Genesis;
 use DecodeLabs\Genesis\Environment;
 use DecodeLabs\Veneer;
-use DecodeLabs\Veneer\LazyLoad;
-
 use Dotenv\Dotenv;
 use Throwable;
 
-#[LazyLoad]
 class Context
 {
     protected ?Finder $finder = null;
