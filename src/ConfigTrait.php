@@ -12,6 +12,9 @@ namespace DecodeLabs\Dovetail;
 use DecodeLabs\Dovetail;
 use DecodeLabs\Fluidity\CastTrait;
 
+/**
+ * @phpstan-require-implements Config
+ */
 trait ConfigTrait
 {
     use CastTrait;
