@@ -1,3 +1,7 @@
+## v0.2.8 (2024-09-04)
+* Added Lucid as dependency
+* Added @phpstan-require-implements constraints
+
 ## v0.2.7 (2024-08-21)
 * Updated dependencies
 * Updated Veneer dependency and Stub
