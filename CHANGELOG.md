@@ -1,3 +1,5 @@
+* Added PHP8.4 to CI workflow
+
 ## v0.2.8 (2024-09-04)
 * Added Lucid as dependency
 * Added @phpstan-require-implements constraints
