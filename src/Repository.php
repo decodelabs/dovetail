@@ -9,12 +9,13 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Dovetail;
 
-use DecodeLabs\Collections\Tree\NativeMutable as MutableTree;
+use DecodeLabs\Collections\Tree;
 
 /**
- * @extends MutableTree<string|int|float|bool|null>
+ * @extends Tree<string|int|float|bool|null>
  */
-class Repository extends MutableTree
+class Repository extends Tree
 {
-    protected const KeySeparator = '.';
+    /** @var non-empty-string */
+    protected const string KeySeparator = '.';
 }

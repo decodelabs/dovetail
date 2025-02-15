@@ -18,51 +18,51 @@ class Dovetail implements Proxy
 {
     use ProxyTrait;
 
-    const Veneer = 'DecodeLabs\\Dovetail';
-    const VeneerTarget = Inst::class;
+    public const Veneer = 'DecodeLabs\\Dovetail';
+    public const VeneerTarget = Inst::class;
 
-    public static Inst $instance;
+    protected static Inst $_veneerInstance;
 
     public static function setFinder(Ref0 $finder): Inst {
-        return static::$instance->setFinder(...func_get_args());
+        return static::$_veneerInstance->setFinder(...func_get_args());
     }
     public static function getFinder(): Ref0 {
-        return static::$instance->getFinder();
+        return static::$_veneerInstance->getFinder();
     }
     public static function setEnvPath(string $path): Inst {
-        return static::$instance->setEnvPath(...func_get_args());
+        return static::$_veneerInstance->setEnvPath(...func_get_args());
     }
     public static function getEnvPath(): string {
-        return static::$instance->getEnvPath();
+        return static::$_veneerInstance->getEnvPath();
     }
     public static function hasEnv(string $name): bool {
-        return static::$instance->hasEnv(...func_get_args());
+        return static::$_veneerInstance->hasEnv(...func_get_args());
     }
     public static function env(array|string $name, string|int|float|bool|null $default = NULL): string|int|float|bool|null {
-        return static::$instance->env(...func_get_args());
+        return static::$_veneerInstance->env(...func_get_args());
     }
     public static function envString(array|string $name, ?string $default = NULL): ?string {
-        return static::$instance->envString(...func_get_args());
+        return static::$_veneerInstance->envString(...func_get_args());
     }
     public static function envInt(array|string $name, ?int $default = NULL): ?int {
-        return static::$instance->envInt(...func_get_args());
+        return static::$_veneerInstance->envInt(...func_get_args());
     }
     public static function envFloat(array|string $name, ?float $default = NULL): ?float {
-        return static::$instance->envFloat(...func_get_args());
+        return static::$_veneerInstance->envFloat(...func_get_args());
     }
     public static function envBool(array|string $name, ?bool $default = NULL): ?bool {
-        return static::$instance->envBool(...func_get_args());
+        return static::$_veneerInstance->envBool(...func_get_args());
     }
     public static function canLoad(string $name, ?string $interface = NULL): bool {
-        return static::$instance->canLoad(...func_get_args());
+        return static::$_veneerInstance->canLoad(...func_get_args());
     }
     public static function load(string $name): Ref1 {
-        return static::$instance->load(...func_get_args());
+        return static::$_veneerInstance->load(...func_get_args());
     }
     public static function loadRepository(string $name): ?Ref2 {
-        return static::$instance->loadRepository(...func_get_args());
+        return static::$_veneerInstance->loadRepository(...func_get_args());
     }
     public static function getLoaderFor(Ref3 $manifest): Ref4 {
-        return static::$instance->getLoaderFor(...func_get_args());
+        return static::$_veneerInstance->getLoaderFor(...func_get_args());
     }
 };

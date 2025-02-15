@@ -17,7 +17,7 @@ interface Config extends Cast
     public static function getRepositoryName(): string;
 
     /**
-     * @return array<int|string, bool|float|int|array<mixed>|string|null>
+     * @return array<int|string,bool|float|int|array<mixed>|string|null>
      */
     public static function getDefaultValues(): array;
 
