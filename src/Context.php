@@ -70,7 +70,7 @@ class Context
     ): Context {
         if ($this->env) {
             throw Exceptional::Runtime(
-                'Cannot set env path after env has been loaded'
+                message: 'Cannot set env path after env has been loaded'
             );
         }
 
@@ -100,7 +100,9 @@ class Context
             ($manifest = $this->finder->findEnv())
         ) {
             if (!$manifest->isFormat(Format::DotEnv)) {
-                throw Exceptional::Setup('Env config must be in DotEnv format');
+                throw Exceptional::Setup(
+                    message: 'Env config must be in DotEnv format'
+                );
             }
 
             return dirname($manifest->getPath());
@@ -127,7 +129,7 @@ class Context
 
 
         throw Exceptional::Runtime(
-            'Unable to detect env path'
+            message: 'Unable to detect env path'
         );
     }
 
@@ -165,6 +167,7 @@ class Context
         if (is_array($name)) {
             foreach ($name as $key) {
                 if (isset($_ENV[$key])) {
+                    // @phpstan-ignore-next-line
                     return $_ENV[$key];
                 }
             }
@@ -172,7 +175,9 @@ class Context
             return $default;
         }
 
-        return $_ENV[$name] ?? $default;
+        /** @var bool|float|int|string|null */
+        $output = $_ENV[$name] ?? $default;
+        return $output;
     }
 
     /**
@@ -299,6 +304,7 @@ class Context
 
         if (
             class_exists(Genesis::class) &&
+            // @phpstan-ignore-next-line
             Genesis::$environment instanceof Environment
         ) {
             $development = Genesis::$environment->isDevelopment();
@@ -338,4 +344,7 @@ class Context
 
 
 // Register Veneer frontage
-Veneer::register(Context::class, Dovetail::class);
+Veneer\Manager::getGlobalManager()->register(
+    Context::class,
+    Dovetail::class
+);

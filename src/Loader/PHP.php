@@ -27,8 +27,10 @@ class PHP implements Loader
         $data = require $manifest->getPath();
 
         if (is_iterable($data)) {
+            // @phpstan-ignore-next-line
             return new Repository($data);
         } else {
+            // @phpstan-ignore-next-line
             return new Repository(null, $data);
         }
     }
