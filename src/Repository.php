@@ -12,7 +12,7 @@ namespace DecodeLabs\Dovetail;
 use DecodeLabs\Collections\Tree;
 
 /**
- * @extends Tree<string|int|float|bool|null>
+ * @extends Tree<string|int|float|bool>
  */
 class Repository extends Tree
 {

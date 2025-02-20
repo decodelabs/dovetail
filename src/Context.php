@@ -110,7 +110,7 @@ class Context
 
         if (class_exists(Genesis::class)) {
             try {
-                return Genesis::$hub->getApplicationPath();
+                return Genesis::$hub->applicationPath;
             } catch (Throwable $e) {
             }
         }
@@ -189,7 +189,7 @@ class Context
         string|array $name,
         ?string $default = null
     ): ?string {
-        return Coercion::toStringOrNull($this->env($name) ?? $default);
+        return Coercion::tryString($this->env($name) ?? $default);
     }
 
     /**
@@ -201,7 +201,7 @@ class Context
         string|array $name,
         ?int $default = null
     ): ?int {
-        return Coercion::toIntOrNull($this->env($name) ?? $default);
+        return Coercion::tryInt($this->env($name) ?? $default);
     }
 
     /**
@@ -213,7 +213,7 @@ class Context
         string|array $name,
         ?float $default = null
     ): ?float {
-        return Coercion::toFloatOrNull($this->env($name) ?? $default);
+        return Coercion::tryFloat($this->env($name) ?? $default);
     }
 
     /**
@@ -225,7 +225,7 @@ class Context
         string|array $name,
         ?bool $default = null
     ): ?bool {
-        return Coercion::toBoolOrNull($this->env($name) ?? $default);
+        return Coercion::tryBool($this->env($name) ?? $default);
     }
 
 
