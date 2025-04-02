@@ -1,3 +1,6 @@
+## v0.2.11 (2025-04-02)
+* Upgraded Collections dependency
+
 ## v0.2.10 (2025-02-20)
 * Upgraded Coercion dependency
 * Upgraded Genesis dependency

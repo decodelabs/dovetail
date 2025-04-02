@@ -13,7 +13,7 @@
 
         "decodelabs/atlas": "^0.12",
         "decodelabs/archetype": "^0.3",
-        "decodelabs/collections": "^0.10",
+        "decodelabs/collections": "^0.11",
         "decodelabs/coercion": "^0.3",
         "decodelabs/exceptional": "^0.5",
         "decodelabs/fluidity": "^0.3.4",
