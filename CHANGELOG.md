@@ -1,3 +1,8 @@
+## v0.2.12 (2025-04-09)
+* Added Genesis Build Provider
+* Replaced Genesis info with Monarch
+* Upgraded Genesis dev dependency
+
 ## v0.2.11 (2025-04-02)
 * Upgraded Collections dependency
 

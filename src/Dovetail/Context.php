@@ -15,8 +15,7 @@ use DecodeLabs\Coercion;
 use DecodeLabs\Dovetail;
 use DecodeLabs\Dovetail\Finder\Generic as GenericFinder;
 use DecodeLabs\Exceptional;
-use DecodeLabs\Genesis;
-use DecodeLabs\Genesis\Environment;
+use DecodeLabs\Monarch;
 use DecodeLabs\Veneer;
 use Dotenv\Dotenv;
 use Throwable;
@@ -108,29 +107,7 @@ class Context
             return dirname($manifest->getPath());
         }
 
-        if (class_exists(Genesis::class)) {
-            try {
-                return Genesis::$hub->applicationPath;
-            } catch (Throwable $e) {
-            }
-        }
-
-        if (false !== ($path = getcwd())) {
-            if (!file_exists($path . '/.env')) {
-                $parent = dirname($path);
-
-                if (file_exists($parent . '/.env')) {
-                    return $parent;
-                }
-            }
-
-            return $path;
-        }
-
-
-        throw Exceptional::Runtime(
-            message: 'Unable to detect env path'
-        );
+        return Monarch::$paths->run;
     }
 
     protected function loadEnv(): void
@@ -302,17 +279,7 @@ class Context
     ): void {
         $data = $configClass::getDefaultValues();
 
-        if (
-            class_exists(Genesis::class) &&
-            // @phpstan-ignore-next-line
-            Genesis::$environment instanceof Environment
-        ) {
-            $development = Genesis::$environment->isDevelopment();
-        } else {
-            $development = $this->envString('ENV_MODE') === 'development';
-        }
-
-        if ($development) {
+        if (Monarch::isDevelopment()) {
             $loader->saveConfig($manifest, new Template($data));
         }
     }
