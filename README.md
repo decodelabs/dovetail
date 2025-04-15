@@ -11,8 +11,6 @@
 
 Dovetail provides a simple, flexible and powerful way to manage configuration data in PHP applications.
 
-_Get news and updates on the [DecodeLabs blog](https://blog.decodelabs.com)._
-
 ---
 
 ## Installation
