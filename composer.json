@@ -11,20 +11,20 @@
     "require": {
         "php": "^8.4",
 
-        "decodelabs/atlas": "^0.13",
-        "decodelabs/archetype": "^0.3",
-        "decodelabs/collections": "^0.11",
-        "decodelabs/coercion": "^0.3",
-        "decodelabs/exceptional": "^0.5",
-        "decodelabs/fluidity": "^0.3.4",
-        "decodelabs/lucid": "^0.5",
-        "decodelabs/monarch": "^0.1.1",
-        "decodelabs/veneer": "^0.12.1",
+        "decodelabs/archetype": "^0.3.10",
+        "decodelabs/atlas": "^0.13.1",
+        "decodelabs/collections": "^0.11.3",
+        "decodelabs/coercion": "^0.3.3",
+        "decodelabs/exceptional": "^0.6.1",
+        "decodelabs/fluidity": "^0.3.6",
+        "decodelabs/lucid": "^0.5.2",
+        "decodelabs/monarch": "^0.1.4",
+        "decodelabs/veneer": "^0.12.8",
 
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.6.2"
     },
     "require-dev": {
-        "decodelabs/genesis": "^0.12.1",
+        "decodelabs/genesis": "^0.12.4",
         "decodelabs/phpstan-decodelabs": "^0.7"
     },
     "conflict": {
