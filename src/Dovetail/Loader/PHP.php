@@ -24,7 +24,11 @@ class PHP implements Loader
     public function loadConfig(
         Manifest $manifest
     ): Repository {
-        $data = require $manifest->getPath();
+        if (!file_exists($manifest->getPath())) {
+            $data = [];
+        } else {
+            $data = require $manifest->getPath();
+        }
 
         if (is_iterable($data)) {
             // @phpstan-ignore-next-line
