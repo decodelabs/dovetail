@@ -18,7 +18,6 @@ use DecodeLabs\Exceptional;
 use DecodeLabs\Monarch;
 use DecodeLabs\Veneer;
 use Dotenv\Dotenv;
-use Throwable;
 
 class Context
 {
@@ -152,7 +151,7 @@ class Context
             return $default;
         }
 
-        /** @var bool|float|int|string|null */
+        /** @var bool|float|int|string|null $output */
         $output = $_ENV[$name] ?? $default;
         return $output;
     }
