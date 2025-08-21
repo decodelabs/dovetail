@@ -11,6 +11,9 @@ namespace DecodeLabs\Dovetail;
 
 use DecodeLabs\Dovetail;
 use DecodeLabs\Fluidity\CastTrait;
+use DecodeLabs\Kingdom\ContainerAdapter;
+use DecodeLabs\Monarch;
+use ReflectionClass;
 
 /**
  * @phpstan-require-implements Config
@@ -22,16 +25,16 @@ trait ConfigTrait
     protected Repository $data;
     protected Manifest $manifest;
 
-    public static function load(): static
-    {
-        return Dovetail::load(static::getRepositoryName())
-            ->as(static::class);
+    public static function provideService(
+        ContainerAdapter $container
+    ): static {
+        $dovetail = $container->get(Dovetail::class);
+        return $dovetail->load(static::class);
     }
 
     public static function getRepositoryName(): string
     {
-        $parts = explode('\\', static::class);
-        return array_pop($parts);
+        return new ReflectionClass(static::class)->getShortName();
     }
 
     public function __construct(

@@ -23,39 +23,35 @@ composer require decodelabs/dovetail
 
 ## Usage
 
-### Importing
-
-Dovetail uses [Veneer](https://github.com/decodelabs/veneer) to provide a unified frontage under <code>DecodeLabs\Dovetail</code>.
-You can access all the primary functionality via this static frontage without compromising testing and dependency injection.
-
 ### Env
 
-Dovetail utilises [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) to load environment variables from a `.env` file in your project root. This is automatically loaded when you first access the Env facade.
+Dovetail utilises [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) to load environment variables from a `.env` file in your project root. This is automatically loaded when you first access the Dovetail service.
 
 ```php
-use DecodeLabs\Dovetail;
+use DecodeLabs\Dovetail\Env;
 
-$dbHost = Dovetail::envString('DB_HOST', 'localhost'); // String
-$dbPort = Dovetail::envInt('DB_PORT', 3306); // Int
-$debug = Dovetail::envBool('DEBUG', false); // Bool
-$test = Dovetail::env('TEST', 'default'); // Mixed
+$dbHost = Env::asString('DB_HOST', 'localhost'); // String
+$dbPort = Env::asInt('DB_PORT', 3306); // Int
+$debug = Env::asBool('DEBUG', false); // Bool
+$test = Env::asString('TEST', 'default'); // Mixed
 ```
+
+Use `Env::try*()` methods to avoid throwing exceptions when the environment variable is not set and no default value is provided.
 
 ### Config
 
-Dovetail provides structures to allow loading config files from any custom location, into <code>Repository</code> container tree objects, and presented in domain specific <code>Config</code> objects which can then provide custom data access methods according to your needs.
+Dovetail provides structures to allow loading config files from any custom location, into `Repository` container tree objects, and presented in domain specific `Config` objects which can then provide custom data access methods according to your needs.
 
-Sensitive data should be loaded from a `.env` file and not stored in config files - use the <code>Dovetail::env*()</code> methods or <code>$_ENV</code> to inject these values into your config.
+Sensitive data should be loaded from a `.env` file and not stored in config files - use the `Env::as*()` and `Env::try*()` methods to inject these values into your config.
 
 ```php
 # config/database.php
-use DecodeLabs\Dovetail;
+use DecodeLabs\Dovetail\Env;
 
 return [
     'adapter' => 'mysql',
-    'host' => $_ENV['DB_HOST'] ?? 'localhost',
-    // or
-    'port' => Dovetail::envInt('DB_PORT', 3306),
+    'host' => Env::asString('DB_HOST', 'localhost'),
+    'port' => Env::asInt('DB_PORT', 3306),
 ];
 ```
 
@@ -87,8 +83,10 @@ class Database implements Config
 
 ```php
 use DecodeLabs\Dovetail;
+use DecodeLabs\Monarch;
 
-$config = Dovetail::load('database');
+$dovetail = Monarch::getService(Dovetail::class);
+$config = $dovetail->load('database');
 $adapter = $config->getAdapter(); // 'mysql'
 ```
 

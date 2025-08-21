@@ -24,8 +24,6 @@ class Template
     protected array $data;
 
     /**
-     * Init with default value array
-     *
      * @param array<int|string, bool|float|int|array<mixed>|string|null> $data
      */
     public function __construct(
@@ -35,8 +33,6 @@ class Template
     }
 
     /**
-     * Parse templated string values
-     *
      * @param array<int|string, bool|float|int|array<mixed>|string|null> $data
      * @return array<int|string, bool|float|int|array<mixed>|string|Resolvable|null> $data
      */
@@ -63,8 +59,6 @@ class Template
     }
 
     /**
-     * Get namespaces
-     *
      * @return array<string>
      */
     public function getNamespaces(): array
@@ -73,8 +67,6 @@ class Template
     }
 
     /**
-     * Get data
-     *
      * @return array<int|string, bool|float|int|array<mixed>|string|Resolvable|null>
      */
     public function getData(): array
@@ -82,9 +74,6 @@ class Template
         return $this->data;
     }
 
-    /**
-     * Get use statements
-     */
     public function getUseStatements(): ?string
     {
         $output = [];

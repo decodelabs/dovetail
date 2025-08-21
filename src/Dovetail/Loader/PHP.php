@@ -18,16 +18,13 @@ use DecodeLabs\Dovetail\Template\Resolvable;
 
 class PHP implements Loader
 {
-    /**
-     * Load PHP array config
-     */
     public function loadConfig(
         Manifest $manifest
     ): Repository {
-        if (!file_exists($manifest->getPath())) {
+        if (!file_exists($manifest->path)) {
             $data = [];
         } else {
-            $data = require $manifest->getPath();
+            $data = require $manifest->path;
         }
 
         if (is_iterable($data)) {
@@ -39,9 +36,6 @@ class PHP implements Loader
         }
     }
 
-    /**
-     * Save PHP array config
-     */
     public function saveConfig(
         Manifest $manifest,
         Template $template
@@ -52,13 +46,11 @@ class PHP implements Loader
             $template->getUseStatements() .
             'return ' . $output . ';' . "\n";
 
-        Atlas::createFile($manifest->getPath(), $output);
+        Atlas::createFile($manifest->path, $output);
     }
 
 
     /**
-     * Export array to PHP
-     *
      * @param array<int|string, bool|float|int|array<mixed>|string|Resolvable|null> $values
      */
     protected static function exportArray(

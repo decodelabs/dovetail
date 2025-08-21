@@ -15,9 +15,6 @@ class Resolvable
     protected string $code;
     protected string|int|float|null $value;
 
-    /**
-     * Parse string value
-     */
     public static function parse(
         string $value
     ): string|static {
@@ -35,9 +32,6 @@ class Resolvable
         return new static($code, $value);
     }
 
-    /**
-     * Init with code and value
-     */
     final public function __construct(
         string $code,
         string|int|float|null $value = null
@@ -46,16 +40,13 @@ class Resolvable
         $this->parseCode($code);
     }
 
-    /**
-     * Split namespace from code
-     */
     protected function parseCode(
         string $code
     ): void {
         // env*()
-        if (preg_match('/^env(String|Bool|Int|Float)\(?/', $code)) {
+        if (preg_match('/^Env::(string|bool|int|float)\(?/', $code)) {
             $this->namespace = 'DecodeLabs\\Dovetail';
-            $this->code = 'Dovetail::' . $code;
+            $this->code = 'Env::' . $code;
             return;
         }
 
@@ -67,25 +58,16 @@ class Resolvable
         }
     }
 
-    /**
-     * Get namespace
-     */
     public function getNamespace(): ?string
     {
         return $this->namespace;
     }
 
-    /**
-     * Get code
-     */
     public function getCode(): string
     {
         return $this->code;
     }
 
-    /**
-     * Get value
-     */
     public function getValue(): string|int|float|null
     {
         return $this->value;

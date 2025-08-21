@@ -10,10 +10,10 @@ declare(strict_types=1);
 namespace DecodeLabs\Dovetail;
 
 use DecodeLabs\Fluidity\Cast;
+use DecodeLabs\Kingdom\Service;
 
-interface Config extends Cast
+interface Config extends Cast, Service
 {
-    public static function load(): static;
     public static function getRepositoryName(): string;
 
     /**
