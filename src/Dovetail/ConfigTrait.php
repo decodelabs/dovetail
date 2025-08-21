@@ -28,7 +28,8 @@ trait ConfigTrait
         ContainerAdapter $container
     ): static {
         $dovetail = $container->get(Dovetail::class);
-        return $dovetail->load(static::class);
+        $ref = new ReflectionClass(static::class);
+        return $ref->newLazyProxy(fn () => $dovetail->load(static::class));
     }
 
     public static function getRepositoryName(): string
