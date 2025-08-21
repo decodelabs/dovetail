@@ -5,12 +5,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Unreleased
+--
+
+---
+
+### [v0.3.0](https://github.com/decodelabs/dovetail/commits/v0.3.0) - 21st August 2025
+
 - Simplified env path detection
 - Added env caching build task
 - Moved env handling to static class
 - Removed load() method from Config interface
 - Added Kingdom Service support
 - Removed Veneer dependency
+
+[Full list of changes](https://github.com/decodelabs/dovetail/compare/v0.2.16...v0.3.0)
 
 ---
 
