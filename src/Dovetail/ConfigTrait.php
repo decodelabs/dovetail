@@ -12,7 +12,6 @@ namespace DecodeLabs\Dovetail;
 use DecodeLabs\Dovetail;
 use DecodeLabs\Fluidity\CastTrait;
 use DecodeLabs\Kingdom\ContainerAdapter;
-use DecodeLabs\Monarch;
 use ReflectionClass;
 
 /**

@@ -9,22 +9,18 @@ declare(strict_types=1);
 
 namespace DecodeLabs;
 
-use DecodeLabs\Archetype;
 use DecodeLabs\Archetype\Exception as ArchetypeException;
 use DecodeLabs\Dovetail\Config;
 use DecodeLabs\Dovetail\Env;
 use DecodeLabs\Dovetail\Finder;
 use DecodeLabs\Dovetail\Finder\Generic as GenericFinder;
-use DecodeLabs\Dovetail\Format;
 use DecodeLabs\Dovetail\Loader;
 use DecodeLabs\Dovetail\Manifest;
 use DecodeLabs\Dovetail\Repository;
 use DecodeLabs\Dovetail\Template;
-use DecodeLabs\Iota;
 use DecodeLabs\Kingdom\ContainerAdapter;
 use DecodeLabs\Kingdom\Service;
 use DecodeLabs\Kingdom\ServiceTrait;
-use DecodeLabs\Monarch;
 
 class Dovetail implements Service
 {
