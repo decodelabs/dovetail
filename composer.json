@@ -25,11 +25,11 @@
         "vlucas/phpdotenv": "^5.6.2"
     },
     "require-dev": {
-        "decodelabs/genesis": "^0.13",
+        "decodelabs/genesis": "^0.14",
         "decodelabs/phpstan-decodelabs": "^0.7"
     },
     "conflict": {
-        "decodelabs/genesis": "<0.13"
+        "decodelabs/genesis": "<0.14"
     },
     "autoload": {
         "psr-4": {
@@ -52,7 +52,8 @@
     },
     "config": {
         "allow-plugins": {
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "decodelabs/genesis": true
         }
     }
 }
