@@ -15,6 +15,8 @@ Dovetail provides a simple, flexible and powerful way to manage configuration da
 
 ## Installation
 
+This package requires PHP 8.4 or higher.
+
 Install via Composer:
 
 ```bash
