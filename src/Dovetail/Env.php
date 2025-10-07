@@ -26,6 +26,7 @@ class Env
             return;
         }
 
+        $paths = Monarch::getPaths();
         $repo = $iota->loadDynamic('dovetail');
         $data = null;
 
@@ -33,12 +34,13 @@ class Env
             $data = $repo->return('dotenv');
         }
 
-        /** @var array<string,string> $data */
+        /** @var ?array<string,string> $data */
 
         if (
             ($data['ENV_MODE'] ?? null) === 'development' &&
             null !== ($time = $repo->getTime('dotenv')) &&
-            filemtime(Monarch::getPaths()->run . '/.env') > $time
+            file_exists($paths->run . '/.env') &&
+            filemtime($paths->run . '/.env') > $time
         ) {
             $repo->remove('dotenv');
             $data = null;
@@ -51,8 +53,7 @@ class Env
             return;
         }
 
-        $env = Dotenv::createMutable(Monarch::getPaths()->run);
-
+        $env = Dotenv::createMutable($paths->run);
         $data = $env->safeLoad();
         self::$envLoaded = true;
 
