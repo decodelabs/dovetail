@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @package Dovetail
- * @license http://opensource.org/licenses/MIT
+ * Dovetail
+ * @license https://opensource.org/licenses/MIT
  */
 
 declare(strict_types=1);
