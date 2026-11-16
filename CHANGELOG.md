@@ -5,10 +5,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Unreleased
+--
+
+---
+
+### [v0.3.7](https://github.com/decodelabs/dovetail/commits/v0.3.7) - 16th November 2026
+
 - Made public read visibility explicit on promoted properties
 - Improved doc comment headers
 - Added AGENTS.md
 - Integrated Chorus dev dependency
+
+[Full list of changes](https://github.com/decodelabs/dovetail/compare/v0.3.6...v0.3.7)
 
 ---
 
@@ -262,4 +270,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [v0.1.0](https://github.com/decodelabs/dovetail/commits/v0.1.0) - 17th October 2023
 
 - Built initial implementation
-
