@@ -12,9 +12,9 @@ namespace DecodeLabs\Dovetail;
 class Manifest
 {
     public function __construct(
-        protected(set) string $name,
-        protected(set) string $path,
-        protected(set) Format $format
+        public protected(set) string $name,
+        public protected(set) string $path,
+        public protected(set) Format $format
     ) {
     }
 
